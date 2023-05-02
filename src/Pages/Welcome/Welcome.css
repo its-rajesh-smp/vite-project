@@ -1,0 +1,7 @@
+.Welcome-div {
+  background-color: chocolate;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px;
+}

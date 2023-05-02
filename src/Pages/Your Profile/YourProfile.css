@@ -1,0 +1,10 @@
+.YourProfile-div {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0px auto;
+  padding: 100px;
+  gap: 30px;
+  background-color: burlywood;
+}

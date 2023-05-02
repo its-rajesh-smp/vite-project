@@ -1,0 +1,20 @@
+.Header-div {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: aquamarine;
+  height: 70px;
+  align-items: center;
+}
+.Header-div p {
+  background-color: rgb(236, 238, 234);
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+}
+.active {
+  color: black;
+  font-size: larger;
+}
