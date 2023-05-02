@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import "./Login.css"
-import { API_KEY_SIGNUP } from '../../assets/assets';
+import { API_KEY_SIGNUP, API_KEY_SIGNIN } from '../../assets/assets';
 
 function Login(props) {
 
@@ -44,9 +44,37 @@ function Login(props) {
     /* -------------------------------------------------------------------------- */
     /*                                    LOGIN                                   */
     /* -------------------------------------------------------------------------- */
-    const login = () => {
+    const login = async () => {
+        const obj = {
+            email: emailRef.current.value,
+            password: passRef.current.value,
+            returnSecureToken: true
+        }
+        try {
+            setLoader(true)
+            const response = await fetch(API_KEY_SIGNIN, {
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            const data = await response.json()
 
+            console.log(data);
+
+            if (!response.ok) {
+                throw new Error(data.error.message)
+            }
+        } catch (error) {
+            alert(error.message)
+
+        }
+        setLoader(false)
     }
+
+
+
 
     return (
         <div className=' Login-div '>
