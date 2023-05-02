@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import "./Login.css"
 import { API_KEY_SIGNUP, API_KEY_SIGNIN } from '../../assets/assets';
+import LoginCTX from '../../Context/LoginCTX';
 
 function Login(props) {
 
@@ -8,6 +9,8 @@ function Login(props) {
     const emailRef = useRef()
     const passRef = useRef()
     const [loader, setLoader] = useState(false)
+    const loggedinCTX = useContext(LoginCTX)
+
 
     /* -------------------------------------------------------------------------- */
     /*                             CREATE NEW ACCOUNT                             */
@@ -32,6 +35,11 @@ function Login(props) {
             if (!response.ok) {
                 throw new Error(data.error.message)
             }
+
+            // Save idToken in local Storage
+            localStorage.setItem("ID_TOKEN", JSON.stringify(data.idToken))
+            loggedinCTX.setIsLoggedIn(true)
+
         } catch (error) {
             alert(error.message)
 
@@ -61,11 +69,14 @@ function Login(props) {
             })
             const data = await response.json()
 
-            console.log(data);
-
             if (!response.ok) {
                 throw new Error(data.error.message)
             }
+
+            // Save idToken in local Storage
+            localStorage.setItem("ID_TOKEN", JSON.stringify(data.idToken))
+            loggedinCTX.setIsLoggedIn(true)
+
         } catch (error) {
             alert(error.message)
 
