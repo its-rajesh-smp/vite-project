@@ -28,7 +28,6 @@ function YourProfile(props) {
             // Save idToken in local Storage
             localStorage.setItem("ID_TOKEN", JSON.stringify(data.idToken))
 
-            console.log(data);
 
         } catch (error) {
             alert(error)

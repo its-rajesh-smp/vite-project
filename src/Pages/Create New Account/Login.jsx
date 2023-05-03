@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import "./Login.css"
 import { API_KEY_SIGNUP, API_KEY_SIGNIN } from '../../assets/assets';
 import LoginCTX from '../../Context/LoginCTX';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Login(props) {
 
@@ -10,6 +11,9 @@ function Login(props) {
     const passRef = useRef()
     const [loader, setLoader] = useState(false)
     const loggedinCTX = useContext(LoginCTX)
+    const history = useHistory()
+
+
 
 
     /* -------------------------------------------------------------------------- */
@@ -39,6 +43,7 @@ function Login(props) {
             // Save idToken in local Storage
             localStorage.setItem("ID_TOKEN", JSON.stringify(data.idToken))
             loggedinCTX.setIsLoggedIn(true)
+            history.push("/your-profile")
 
         } catch (error) {
             alert(error.message)
@@ -76,6 +81,7 @@ function Login(props) {
             // Save idToken in local Storage
             localStorage.setItem("ID_TOKEN", JSON.stringify(data.idToken))
             loggedinCTX.setIsLoggedIn(true)
+            history.push("/your-profile")
 
         } catch (error) {
             alert(error.message)
