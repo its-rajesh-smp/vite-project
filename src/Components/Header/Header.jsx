@@ -17,6 +17,13 @@ function Header(props) {
         history.push("/login")
     }
 
+    if (loggedinCTX.isLoggedIn === true) {
+        setTimeout(function () {
+            logOutHandeler()
+        }, 5000);
+    }
+
+
 
     return (
         <div className=' Header-div '>
